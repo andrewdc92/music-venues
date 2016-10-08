@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="musicApp">
   <head>
     <meta charset="utf-8">
     <title> Music Venues App</title>
@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="/styles/main.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
     <!--Script Files  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="scripts/app.js"></script>
@@ -29,72 +31,16 @@
     <div class="parallax-content">
       <p id= "map-instructions"> Look up local music venues through Google Places and create a comprehensive directory for your friends!</p>
 
-        <form id='newVenueForm' class="form-style">
-          <div class="row">
-            <div class="large-6 columns">
-              <label class="form-style">Venue Name
-                <input id="nameData" name="name" type="text" placeholder="e.g. Music Inn">
-              </label>
-              <label class="form-style">Venue Address
-                <input id="addressData" name="address"type="text" placeholder="e.g. 1234 Park Ave">
-              </label>
-              <label class="form-style">Venue Website
-                <input id="websiteData" name="website" type="text" placeholder="e.g. https://">
-              </label>
-              <label class="form-style">Venue Image
-                <input id="imageData" name="image" type="text" placeholder="Image URL">
-              </label>
-              <a role="button" aria-label="submit form" id="form-btn" class="button">Submit</a>
-
-              <!-- //// map set up here  -->
-              <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-              <div id="map"></div>
-
-            </div>
-          </div>
-        </form>
-      </div>
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+      <div id="map"></div>
       <div class="parallax-content">
         <div class="row">
           <h2> Venues </h2>
 
           <div id="venues">
 
-        <!---one venue-->
-          <script id="venues-template" type="text/x-handlebars-template">
-            {{#each venues}}
-            <div class="row venue" data-venue-id={{_id}}>
-              <div class="card large-12 columns">
-                  <ul class="inline-list large-text-center">
-                      <img src={{image}} class="large-6 columns">
-                      <div id="card-content">
-                        <h4 class="inline-header large-6 small-12 columns">Venue Name:</h4>
-                        <span class="venue-name large-6 small-12 columns">{{name}}</span>
-                        <h4 class="inline-header large-6 small-12 columns">Venue Address:</h4>
-                        <span class="venue-address large-6 small-12 columns">{{address}}</span>
-                        <h4 class="inline-header large-6 small-12 columns">Venue Website:</h4>
-                        <span class="venue-website large-6 small-12 columns">{{website}}</span>
-                        <h4 class="inline-header large-6 small-12 columns">Comments:</h4>
-                        <span class="venue-comments large-6 small-12 columns">
-                          {{#each comments}}
-                              <p><strong>{{name}}</strong> | {{comment}}</p>
-                          {{/each}}
-                        </span>
-                        <form id="comment-section-{{_id}}" class="large-6 columns comment-section" name="comments" data-venue-id={{_id}}>
-                          <input id="title" name="name" type="text" placeholder="e.g. John Smith" required></input>
-                          <input id="body" name="comment" type="text" placeholder="Comments go here" required></input>
-                        </form>
-                        <br>
-                        <br>
-                          <a class="button small comment-btn" data-venue-id={{_id}}>Comment</a>
-                          <a class="button small post-btn" data-venue-id={{_id}}>Post Comment</a>
-                          <a class="button small delete-btn" data-venue-id={{_id}}>Delete</a>
-                      </div>
-                  </ul>
-              </div>
-            </div>
-            {{/each}}
-          </script>
+
+
         </div>
       </div>
     </div>

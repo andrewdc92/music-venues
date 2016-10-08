@@ -9,18 +9,21 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var controllers = require('./controllers');
+
+
 //sets the root route
 app.get('/', function (req, res) {
   res.sendFile('views/index.html' , { root : __dirname});
 });
 
-var controllers = require('./controllers');
+app.get('/templates/:name', function templates(req, res) {
+  var name = req.params.name;
+  res.sendFile(__dirname + '/views/templates/' + name + '.html');
+});
+
 // get all the venues
 
-
-app.get('/search', function (req, res) {
-  res.send('search');
-});
 
 
 app.get('/api', controllers.venues.index);
@@ -37,6 +40,9 @@ app.delete('/api/venues/:venuesId', controllers.venues.destroy);
 app.get('/api/venues/:venuesId', controllers.venues.show);
 //add comments to a venue
 app.post('/api/venues/:venuesId/comments', controllers.venueComments.create);
+
+app.put('/api/venues/:venueId', controllers.venues.update);
+
 
 
 app.listen(process.env.PORT || 3000, function () {
